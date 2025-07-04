@@ -1,5 +1,8 @@
 import express from "express";
-import { registerUser } from "../controllers/authController.controller.js";
+import {
+  loginUser,
+  registerUser,
+} from "../controllers/authController.controller.js";
 import { protect } from "../middleware/authMiddleware.middleware.js";
 import upload from "../middleware/uploadMiddleware.middleware.js";
 
@@ -7,6 +10,8 @@ const router = express.Router();
 
 // Regiter/ Signup User
 router.post("/register", registerUser);
+// Login user
+router.post("/login", loginUser);
 
 // Upload image
 router.post("/upload/image", upload.single("image"), (req, res) => {
