@@ -4,6 +4,8 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 
+import connectDB from "./config/db.config.js";
+
 const app = express();
 
 // Middleware to handle CORS
@@ -14,6 +16,9 @@ app.use(
         allowedHeaders: ["Content-Type", "Authorization"],
     })
 );
+
+// Connect MongoDB
+connectDB();
 
 // Middleware
 app.use(express.json());
