@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  getUserProfile,
   loginUser,
   registerUser,
 } from "../controllers/authController.controller.js";
@@ -12,6 +13,8 @@ const router = express.Router();
 router.post("/register", registerUser);
 // Login user
 router.post("/login", loginUser);
+// Get user profile
+router.get("/get", protect, getUserProfile);
 
 // Upload image
 router.post("/upload/image", upload.single("image"), (req, res) => {
